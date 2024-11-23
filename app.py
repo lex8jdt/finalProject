@@ -1,5 +1,4 @@
 import config as cfg
-import multiprocessing
 import threading
 import signal
 
@@ -17,7 +16,8 @@ def create_app():
 app = create_app()
 
 def run_flask():
-    app.run(debug=cfg.DEBUG, use_reloader=False)
+    from waitress import serve
+    serve(app, port=5000)
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
