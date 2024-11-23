@@ -1,0 +1,10 @@
+# Flask
+DEBUG = True
+
+#Discord Bot
+DISCORD_TOKEN = 'Discord Token'
+CHANNEL_ID = "Discord Channel ID"
+
+#Weather API
+WEATHER_API_URL = "https://api.weatherbit.io/v2.0/forecast/daily"
+WEATHER_API_KEY = "df382b05ec56493b865063e984862441"

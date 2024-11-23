@@ -1,9 +1,10 @@
 import requests
+import config as cfg
 
 class WeatherService:
     def __init__(self, api_key):
         self.api_key = api_key
-        self.base_url = "https://api.weatherbit.io/v2.0/forecast/daily"
+        self.base_url = cfg.WEATHER_API_URL
 
     def get_forecast(self, lat, lon, days=7, lang="es"):
         """

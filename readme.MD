@@ -17,47 +17,60 @@ Utiliza las siguientes apis públicas:
 
 1. Clonar el repositorio de github
 
-    ``` bash
-    git clone https://github.com/lex8jdt/finalProject
-    ```
+   ```bash
+   git clone https://github.com/lex8jdt/finalProject
+   ```
 
 2. Crear un entorno virtual
 
-    ``` bash
-    pyhton -m venv .venv
-    ```
+   ```bash
+   pyhton -m venv .venv
+   ```
 
 3. Instalar dependencias
 
-    ``` bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 4. Activar entorno virtual
 
-    - Windows
+   - Windows
 
-        ``` bash
-        .venv\Scripts\activate
-        ```
+     ```bash
+     .venv\Scripts\activate
+     ```
 
-    - Unix
+   - Unix
 
-        ``` bash
-        source venv/bin/activate
-        ```
+     ```bash
+     source venv/bin/activate
+     ```
 
-5. Ejecutar el proyecto
+5. Establecer variables de entorno
 
-    ``` bash
-    flask run
-    ```
+   - Renombrar `config.py.template` a `config.py`
+   - Cambiar los valores del template a unos propios.
 
-6. Exportar y actualizar requirements.tx en caso de modificacion
+6. Ejecutar el proyecto
 
-    ``` bash
-    pip freeze > requirements.txt
-    ```
+   - Sin bot corriendo
+
+   ```bash
+   flask run
+   ```
+
+   - Con bot corriendo
+
+   ```bash
+   python app.py
+   ```
+
+7. Exportar y actualizar requirements.tx en caso de modificacion
+
+   ```bash
+   pip freeze > requirements.txt
+   ```
 
 ---
 

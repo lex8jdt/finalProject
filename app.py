@@ -1,52 +1,34 @@
-from flask import Flask, request, jsonify, render_template
-from services.weatherService import WeatherService
-from services.coordinatesService import CoordinatesService
+import config as cfg
+import multiprocessing
+import threading
+import signal
 
-app = Flask(__name__)
+from flask import Flask
+from api import api_bp
+from bot.discord_bot import run_bot, close_bot
 
-# Inicializa el servicio con tu clave de API
-weather_service = WeatherService(api_key="df382b05ec56493b865063e984862441")
-coordinates_service = CoordinatesService()
+def create_app():
+    app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+    app.register_blueprint(api_bp)
 
+    return app
 
-@app.route('/forecast', methods=['GET'])
-def get_forecast():
+app = create_app()
 
-    city = request.args.get('ciudad')
-
-    if not city:
-        return jsonify({"error": "Se requiere el parámetro 'city'"}), 400
-
-        # Llama al servicio de Nominatim
-    location_data = coordinates_service.get_coordinates(city)
-    if location_data is None:
-        return jsonify({"error": "No se pudo obtener la ubicación"}), 500
-
-    lat = location_data[0]["lat"]
-    lon = location_data[0]["lon"]
-
-    # Validación de parámetros
-    if not lat or not lon:
-        return jsonify({"error": "Se requieren los parámetros 'lat' y 'lon'"}), 400
-
-    try:
-        lat = float(lat)
-        lon = float(lon)
-    except ValueError:
-        return jsonify({"error": "Los parámetros 'lat' y 'lon' deben ser números válidos"}), 400
-
-    # Llama al servicio
-    forecast_data = weather_service.get_forecast(lat, lon)
-    if forecast_data is None:
-        return jsonify({"error": "No se pudo obtener el pronóstico"}), 500
-
-    return jsonify(forecast_data)
+def run_flask():
+    app.run(debug=cfg.DEBUG, use_reloader=False)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    
+    discord_thread = threading.Thread(target=run_bot)
+    discord_thread.start()
+    flask_thread = threading.Thread(target=run_flask)
+    flask_thread.start()
+    
+    try:
+        discord_thread.join()
+        flask_thread.join()
+    except KeyboardInterrupt:
+        close_bot()
