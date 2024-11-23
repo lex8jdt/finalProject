@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from services import weather_service, coordinates_service
+import services.coordinates_service as coordinates_service
+import services.weather_service as weather_service
 
 weather_bp = Blueprint('weather_bp', __name__)
 
