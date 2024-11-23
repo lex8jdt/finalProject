@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from services.weatherService import WeatherService
 from services.coordinatesService import CoordinatesService
 
