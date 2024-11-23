@@ -27,13 +27,7 @@ Utiliza las siguientes apis públicas:
    pyhton -m venv .venv
    ```
 
-3. Instalar dependencias
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Activar entorno virtual
+3. Activar entorno virtual
 
    - Windows
 
@@ -46,6 +40,12 @@ Utiliza las siguientes apis públicas:
      ```bash
      source venv/bin/activate
      ```
+
+4. Instalar dependencias
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 5. Establecer variables de entorno
 
@@ -78,4 +78,4 @@ Utiliza las siguientes apis públicas:
 
 1. <http://127.0.0.1:5000/>
 
-2. <http://127.0.0.1:5000/forecast?ciudad=Madrid>
+2. <http://127.0.0.1:5000/weather/forecast?ciudad=Madrid>
