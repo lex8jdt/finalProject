@@ -25,6 +25,13 @@ async def on_message(message):
 async def hello(ctx: commands.Context):
     await ctx.send('Hello!')
     
+async def send_message(message):
+    channel = bot.get_channel(CHANNEL_ID)
+    if channel:
+        await channel.send(message)
+    else:
+        print('Channel not found.')    
+
 def run_bot():
     print('Running Discord Bot...')
     bot.run(DISCORD_TOKEN)

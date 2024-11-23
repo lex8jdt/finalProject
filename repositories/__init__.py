@@ -1,0 +1,5 @@
+from .weather_api_repository import WeatherApiRepository
+from .coordinates_api_repository import CoordinatesApiRepository
+
+weather_api_repository = WeatherApiRepository()
+coordinates_api_repository = CoordinatesApiRepository()

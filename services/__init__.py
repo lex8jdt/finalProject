@@ -1,6 +1,6 @@
 from .weather_service import WeatherService
 from .coordinates_service import CoordinatesService
-import config as cfg
+from repositories import weather_api_repository, coordinates_api_repository
 
-weather_service = WeatherService(api_key=cfg.WEATHER_API_KEY)
-coordinates_service = CoordinatesService()
+weather_service = WeatherService(weather_api_repository, coordinates_api_repository)
+coordinates_service = CoordinatesService(coordinates_api_repository)
