@@ -1,6 +1,6 @@
 from .weather_service import WeatherService
-from .coordinates_service import CoordinatesService
-from repositories import weather_api_repository, coordinates_api_repository
+from .location_service import LocationService
+from repositories import weather_api_repository, location_api_repository
 
-weather_service = WeatherService(weather_api_repository, coordinates_api_repository)
-coordinates_service = CoordinatesService(coordinates_api_repository)
+weather_service = WeatherService(weather_api_repository, location_api_repository)
+location_service = LocationService(location_api_repository)

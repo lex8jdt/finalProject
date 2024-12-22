@@ -1,6 +1,9 @@
 # Flask
 DEBUG = True
 
+DATABASE = 'data/airport_codes.db'
+DATABASE_NAME = 'data/airport_codes.db'
+
 #Discord Bot
 DISCORD_TOKEN = 'Discord Token'
 CHANNEL_ID = "Discord Channel ID"

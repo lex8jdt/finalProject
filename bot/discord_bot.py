@@ -24,7 +24,10 @@ async def on_message(message):
 @bot.command(name='hello')
 async def hello(ctx: commands.Context):
     await ctx.send('Hello!')
-    
+
+def call_async_send_message(message):
+    bot.loop.create_task(send_message(message))
+
 async def send_message(message):
     channel = bot.get_channel(CHANNEL_ID)
     if channel:
