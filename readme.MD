@@ -5,11 +5,11 @@ El proyecto se basa en una API implementada en python utilizando flask.
 Utiliza las siguientes apis públicas:
 
 - Obtener coordenadas de una ciudad
-  - <https://nominatim.openstreetmap.org/search?q=Madrid&format=json>
-- Obtener tiempo de unas coordenadas
-  - <https://api.weatherbit.io/v2.0/current?lat=40.4168&lon=-3.7038&key=df382b05ec56493b865063e984862441>
-- Obtener vuelos y precios
-  - URL QUE NO SE
+  - <https://nominatim.openstreetmap.org/search>
+- Obtener temperatura durante un tiempo determinado de unas coordenadas
+  - <https://api.open-meteo.com/v1/forecast>
+- Obtener histórico de vuelos desde un aeropuerto durante un periodo de tiempo concreto
+  - <https://opensky-network.org/api/flights/departure>
 - Bot de mensajería de discord
   - Api integrada en librería `discord.py`.
 
@@ -85,4 +85,8 @@ Utiliza las siguientes apis públicas:
 
 1. <http://127.0.0.1:5000/>
 
-2. <http://127.0.0.1:5000/weather/forecast?ciudad=Madrid>
+2. <http://127.0.0.1:5000/search>
+
+## Funcionamiento
+
+Una vez se acceda a la página principal del proyecto, se podrá hacer uso del buscador para introducir una ciudad de salida y una ciudad de llegada. El resultado serán los vuelos transcurridos entre ambas ciudades el día anterior a la consulta, y la temperatura que hizo en ambas ciudades a lo largo del día.

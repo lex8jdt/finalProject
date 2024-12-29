@@ -31,7 +31,7 @@ class LocationApiRepository:
             cursor.execute('''
                 SELECT ident, iata_code, name, municipality, iso_country
                 FROM airports
-                WHERE municipality LIKE ? AND type = 'large_airport'
+                WHERE municipality LIKE ? AND (type = 'large_airport' OR type = 'medium_airport')
             ''', ('%' + city_name + '%',))
 
             results = cursor.fetchall()
@@ -40,13 +40,13 @@ class LocationApiRepository:
                 # Format the response for matching airports
                 airports = [
                     {
-                        "ICAO Code": ident,
+                        "ICAO Code": icao_code,
                         "IATA Code": iata_code,
                         "Airport Name": name,
-                        "City": municipality,
+                        "City": city,
                         "Country": iso_country
                     }
-                    for ident, iata_code, name, municipality, iso_country in results
+                    for icao_code, iata_code, name, city, iso_country in results
                 ]
                 return airports
             else:

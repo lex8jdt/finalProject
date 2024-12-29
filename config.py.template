@@ -9,8 +9,10 @@ DISCORD_TOKEN = 'Discord Token'
 CHANNEL_ID = "Discord Channel ID"
 
 #Weather API
-WEATHER_API_URL = "https://api.weatherbit.io/v2.0/forecast/daily"
-WEATHER_API_KEY = "APIKEY"
+WEATHER_API_URL = "https://api.open-meteo.com/v1/forecast"
 
 #Nominatim API
 NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search"
+
+#OpenSky API
+OPENSKY_API_URL = "https://opensky-network.org/api/flights/departure"

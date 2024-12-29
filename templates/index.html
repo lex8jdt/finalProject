@@ -3,19 +3,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Buscador de vuelos</h1>
     <p>Bienvenido a nuestro buscador</p>
-    <form action="/flights" method="POST">
+    <form action="/search" method="GET">
         <label for="origin">Origen:</label>
         <input type="text" name="origin" id="origin" required>
         <label for="destination">Destino:</label>
         <input type="text" name="destination" id="destination" required>
-        <label for="date">Fecha:</label>
-        <input type="date" name="date" id="date" required>
         <input type="submit" value="Buscar">
     </form>
+
+    {% if data %}
+    <h1>Weather and Flight Information</h1>
+
+    <h2>Destination Weather</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (°C)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data.destination_weather %}
+            <tr>
+                <td>{{ item.date }}</td>
+                <td>{{ item.temperature_2m }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Origin Weather</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (°C)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data.origin_weather %}
+            <tr>
+                <td>{{ item.date }}</td>
+                <td>{{ item.temperature_2m }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Flights</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in data.flights %}
+            <tr>
+                <td>{{ flight.origin }}</td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.departure_time }}</td>
+                <td>{{ flight.arrival_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </body>
 </html>

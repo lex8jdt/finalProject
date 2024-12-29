@@ -112,3 +112,6 @@ dmypy.json
 
 # Environments
 config.py
+
+#Database cache
+.cache.sqlite
