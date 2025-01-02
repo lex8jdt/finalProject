@@ -4,18 +4,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
         }
+
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
         }
+
         th {
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        table tr:first-child th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        table tr:first-child th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
+
+        .center {
+            text-align: center;
         }
     </style>
 </head>
@@ -25,16 +110,16 @@
     <p>Bienvenido a nuestro buscador</p>
     <form action="/search" method="GET">
         <label for="origin">Origen:</label>
-        <input type="text" name="origin" id="origin" required>
+        <input type="text" name="origin" id="origin" placeholder="Ejemplo: Madrid" required>
         <label for="destination">Destino:</label>
-        <input type="text" name="destination" id="destination" required>
+        <input type="text" name="destination" id="destination" placeholder="Ejemplo: Barcelona" required>
         <input type="submit" value="Buscar">
     </form>
 
     {% if data %}
-    <h1>Weather and Flight Information</h1>
+    <h1 class="center">Weather and Flight Information</h1>
 
-    <h2>Destination Weather</h2>
+    <h2 class="center">Destination Weather</h2>
     <table>
         <thead>
             <tr>
@@ -52,7 +137,7 @@
         </tbody>
     </table>
 
-    <h2>Origin Weather</h2>
+    <h2 class="center">Origin Weather</h2>
     <table>
         <thead>
             <tr>
@@ -70,7 +155,7 @@
         </tbody>
     </table>
 
-    <h2>Flights</h2>
+    <h2 class="center">Flights</h2>
     <table>
         <thead>
             <tr>
