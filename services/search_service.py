@@ -2,6 +2,7 @@ from repositories import LocationApiRepository, FlightApiRepository, WeatherApiR
 from flask import jsonify, render_template
 import json
 import datetime
+from bot import discord_bot
 
 class SearchService:
 
@@ -104,4 +105,9 @@ class SearchService:
         })
 
         data = data.get_json()
+        for i, flight in enumerate(data["flights"]):
+            discord_bot.call_async_send_message('Vuelo desde ' + flight["origin"] + ' a ' + flight["destination"] + ' con salida a las ' + str(flight["departure_time"]) + ' y llegada a las ' + str(flight["arrival_time"]))
+            if i >= 5:
+                break
+        
         return render_template('index.html', data=data)
